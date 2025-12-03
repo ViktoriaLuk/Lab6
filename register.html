@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Реєстрація — Лук'яніхіна Вікторія</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <h1>Реєстрація користувача</h1>
+  </header>
+
+  <main>
+    <form class="register-form" onsubmit="return handleSubmit()">
+      <!-- ПІБ -->
+      <div class="form-row">
+        <label for="lastname">Прізвище</label>
+        <input type="text" id="lastname" name="lastname" required />
+
+        <label for="birthdate">Дата народження</label>
+        <input type="date" id="birthdate" name="birthdate" required />
+      </div>
+
+      <div class="form-row">
+        <label for="firstname">Ім’я</label>
+        <input type="text" id="firstname" name="firstname" required />
+
+        <label for="email">Електронна адреса</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-row">
+        <label for="middlename">По батькові</label>
+        <input type="text" id="middlename" name="middlename" required />
+
+        <label for="id">Ідентифікація</label>
+        <input type="text" id="id" name="id" required />
+      </div>
+
+      <!-- Випадаючий список -->
+      <div class="form-row">
+        <label for="specialty">Освітня програма</label>
+        <select id="specialty" name="specialty" required>
+          <option value="" selected hidden>Оберіть освітню програму</option>
+          <option value="elit">Електроніка та ІТ</option>
+          <option value="cs">Комп’ютерні науки</option>
+          <option value="se">Програмна інженерія</option>
+          <option value="design">Комп’ютерний дизайн</option>
+        </select>
+      </div>
+
+     
+      <fieldset class="form-row">
+        <legend>Тип акаунта</legend>
+        <label for="role-student">
+          <input type="radio" id="role-student" name="role" value="student" checked />
+          Студент
+        </label>
+        <label for="role-teacher">
+          <input type="radio" id="role-teacher" name="role" value="teacher" />
+          Викладач
+        </label>
+        <label for="role-guest">
+          <input type="radio" id="role-guest" name="role" value="guest" />
+          Гість
+        </label>
+      </fieldset>
+
+     
+      <div class="form-row">
+        <label for="about">Коротка інформація про себе</label>
+        <textarea id="about" name="about" rows="3" placeholder="Напишіть кілька слів про себе..."></textarea>
+      </div>
+
+      
+      <div class="form-row">
+        <label for="agree">
+          <input type="checkbox" id="agree" name="agree" required />
+          Я погоджуюсь з умовами використання сайту
+        </label>
+      </div>
+
+     
+      <div class="buttons">
+        <button type="submit" class="btn-primary">Зареєструвати</button>
+        <button type="reset" class="btn-secondary">Відмінити</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p id="pageIdBadge"></p>
+  </footer>
+
+  <script>
+    // Персоналізація
+    const studentName = "Лук'яніхіна Вікторія";
+    const group = "ІН-31/1";
+    const emoji = "✨";
+
+    function generatePageId() {
+      const ts = new Date().toISOString().replace(/[-:.TZ]/g, "");
+      const rnd = Math.random().toString(36).slice(2, 8).toUpperCase();
+      return `LAB4-${ts}-${rnd}`;
+    }
+
+    function setBadge(id) {
+      const el = document.getElementById("pageIdBadge");
+      if (el) el.textContent = `PageID: ${id} (${studentName}, ${group})`;
+    }
+
+    function handleSubmit() {
+      
+      const requiredInputs = document.querySelectorAll("input[required]");
+      for (const input of requiredInputs) {
+        if (input.type === "checkbox") {
+          if (!input.checked) {
+            alert("Потрібно погодитись з умовами використання.");
+            return false;
+          }
+        } else if (!input.value.trim()) {
+          alert("Будь ласка, заповніть усі обов'язкові поля!");
+          return false;
+        }
+      }
+
+      const specialty = document.getElementById("specialty");
+      if (!specialty.value) {
+        alert("Будь ласка, оберіть освітню програму.");
+        return false;
+      }
+
+      alert(`${emoji} Реєстрація успішна! Дякуємо, ${studentName}!`);
+      return false; 
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const id = generatePageId();
+      setBadge(id);
+      console.log(`${emoji} Вітаю! Це моя ЛР4. Студентка: ${studentName}, група: ${group}, ID: ${id}`);
+    });
+  </script>
+</body>
+</html>

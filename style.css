@@ -1,0 +1,267 @@
+:root {
+  /* 🎨 Персоналізація */
+  --accent: #f700ad; /* основний колір */
+  --bg: #171a27;
+  --card: #151a2f;
+  --text: #e6e9f2;
+  --muted: #7685e4;
+  --radius: 16px;
+  --shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Базові стилі --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(247, 0, 173, 0.1), transparent 60%),
+              linear-gradient(180deg, #0b0e1b, #0f1220 40%);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+/* --- Заголовок сайту --- */
+#site-header {
+  text-align: center;
+  padding: 20px;
+  background: color-mix(in hsl, var(--accent), #000 85%);
+  border-bottom: 2px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+
+#site-title {
+  color: var(--accent);
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+#short-desc {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* --- Фото профілю --- */
+#profile-figure img {
+  max-width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+/* --- Навігація --- */
+nav {
+  text-align: center;
+  margin: 16px 0;
+}
+
+#main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 0;
+}
+
+#main-nav a, #auth-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#main-nav a:hover,
+#auth-nav a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* --- Основний вміст --- */
+main {
+  width: min(900px, 95%);
+  margin: 24px auto;
+  display: grid;
+  gap: 24px;
+}
+
+article, section, aside {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in hsl, var(--accent), #000 80%);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+h2, h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+/* --- Зображення всередині контенту --- */
+figure img {
+  width: 50%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+  margin: 0 auto; /* центрує фото */
+}
+
+
+figcaption {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* --- Контакти --- */
+address {
+  font-style: normal;
+  margin-bottom: 12px;
+}
+
+ul {
+  list-style: square;
+  padding-left: 20px;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- Footer --- */
+#site-footer {
+  text-align: center;
+  padding: 18px;
+  background: color-mix(in hsl, var(--accent), #000 85%);
+  border-top: 2px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+
+#site-footer time {
+  color: var(--muted);
+}
+
+/* --- Форми (login + register) --- */
+form {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid color-mix(in hsl, var(--accent), #000 80%);
+  box-shadow: var(--shadow);
+  width: min(600px, 90%);
+  margin: 20px auto;
+}
+
+label {
+  display: flex;
+  align-items: center; /* галочка/радіо по середині тексту */
+  gap: 6px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input, button, select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--muted);
+  background: #1d2137;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--accent);
+}
+
+button {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: color-mix(in hsl, var(--accent), #fff 20%);
+}
+
+/* --- Чекбокси --- */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* --- Радіобатони --- */
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* --- Текстове поле --- */
+textarea {
+  resize: vertical;
+}
+
+/* --- Select --- */
+select {
+  cursor: pointer;
+}
+
+/* --- Адаптивність --- */
+@media (max-width: 600px) {
+  #main-nav ul {
+    flex-direction: column;
+  }
+  .profile {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Стиль для розділу про Гогіна --- */
+.gogin {
+  background-color: #fffaf0;       /* світлий фон */
+  border: 2px solid #e0c97f;       /* м’яка золота рамка */
+  border-radius: 15px;             
+  padding: 20px;                   
+  margin: 20px auto;               
+  max-width: 700px;                
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.gogin h2 {
+  text-align: center;
+  color: #6b4e16;
+  font-family: "Georgia", serif;
+}
+
+.gogin p {
+  text-align: justify;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
+}
